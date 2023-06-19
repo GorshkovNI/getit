@@ -1,9 +1,13 @@
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 let mode = 'development'
 if (process.env.NODE_ENV === 'production') {
     mode = 'production'
 }
 console.log(mode + ' mode')
-
 
 module.exports = {
     mode: mode,
@@ -11,15 +15,19 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: "js/main.js",
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
         alias: {
             '@src': path.resolve(__dirname, 'src'),
             '@assets': path.resolve(__dirname, 'src/assets'),
-            '@components': path.resolve(__dirname, 'src/components'),
-            '@utils': path.resolve(__dirname, 'src/utils'),
-            '@view': path.resolve(__dirname, 'src/views')
+            '@shared': path.resolve(__dirname, 'src/shared'),
+            '@utils': path.resolve(__dirname, './src/utils'),
+            '@view': path.resolve(__dirname, 'src/views'),
+            '@store': path.resolve(__dirname, 'src/store'),
+            '@widgets': path.resolve(__dirname, 'src/widgets'),
+            '@entities': path.resolve(__dirname, 'src/entities'),
         }
     },
 
@@ -44,41 +52,49 @@ module.exports = {
                 type: 'asset/resource',
             },
             {
-                test: /\.(sa|sc|c)ss$/,
-                use: [
-                    (mode === 'development') ? "style-loader" : MiniCssExtractPlugin.loader,
-                    "css-loader",
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            postcssOptions: {
-                                plugins: [
-                                    [
-                                        "postcss-preset-env",
-                                        {
-                                            // Options
-                                        },
-                                    ],
-                                ],
-                            },
-                        },
-                    },
-                    "sass-loader",
-                ],
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
             },
+            // {
+            //     test: /\.(sa|sc|c)ss$/,
+            //     use: [
+            //         (mode === 'development') ? "style-loader" : MiniCssExtractPlugin.loader,
+            //         "css-loader",
+            //         {
+            //             loader: "postcss-loader",
+            //             options: {
+            //                 postcssOptions: {
+            //                     plugins: [
+            //                         [
+            //                             "postcss-preset-env",
+            //                             {
+            //                                 // Options
+            //                             },
+            //                         ],
+            //                     ],
+            //                 },
+            //             },
+            //         },
+            //         "sass-loader",
+            //     ],
+            // },
         ]
     },
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./src/public/index.html"
+            template: "./public/index.html"
         }),
         new ForkTsCheckerWebpackPlugin()
     ],
 
     devServer: {
-        port: 8000,
-        static: './dist'
+        static: {
+            directory: path.join(__dirname, 'dist'),
+        },
+        compress: true,
+        port: 8080,
+        historyApiFallback: true,
     },
 
     devtool: 'source-map'
