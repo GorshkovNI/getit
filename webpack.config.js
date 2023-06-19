@@ -1,8 +1,3 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
 let mode = 'development'
 if (process.env.NODE_ENV === 'production') {
     mode = 'production'
