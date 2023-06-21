@@ -1,8 +1,9 @@
-import React from "react";
+import React, {FC} from "react";
 import styles from './Header.module.css'
 import {Link} from "react-router-dom";
 import {Button} from "../../shared/Button/Button";
 import cn from 'classnames'
+import {ProfileArea} from "./components/ProfileArea/ProfileArea";
 
 export const Header = () => {
     return(
@@ -22,7 +23,7 @@ export const Header = () => {
                     </Link>
                 </div>
                 <div className={styles.rightSide}>
-
+                    <ProfileArea />
                 </div>
             </nav>
         </header>

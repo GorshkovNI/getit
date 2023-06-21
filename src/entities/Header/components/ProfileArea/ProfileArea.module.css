@@ -1,0 +1,10 @@
+.profileInfo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--button-text-color);
+}
+
+.avatar1{
+    background-color: red;
+}
