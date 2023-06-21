@@ -1,0 +1,15 @@
+:root[data-theme='light']{
+    --button-text-color: #ffffff;
+    --button-backgroud-color: #b7acac;
+    --buttom-background-primary: #49a9f8;
+}
+
+:root[data-theme='dark']{
+    --button-text-color: #000000;
+    --button-backgroud-color: #9bad9b;
+    --buttom-background-primary: #49a9f8
+}
+
+body{
+    margin: 0;
+}

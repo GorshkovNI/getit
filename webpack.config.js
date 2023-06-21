@@ -23,7 +23,7 @@ module.exports = {
             '@src': path.resolve(__dirname, 'src'),
             '@assets': path.resolve(__dirname, 'src/assets'),
             '@shared': path.resolve(__dirname, 'src/shared'),
-            '@utils': path.resolve(__dirname, './src/utils'),
+            '@utils': path.resolve(__dirname, 'src/utils'),
             '@view': path.resolve(__dirname, 'src/views'),
             '@store': path.resolve(__dirname, 'src/store'),
             '@widgets': path.resolve(__dirname, 'src/widgets'),
@@ -96,6 +96,5 @@ module.exports = {
         port: 8080,
         historyApiFallback: true,
     },
-
     devtool: 'source-map'
 }
