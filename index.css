@@ -2,6 +2,9 @@
     --button-text-color: #ffffff;
     --button-backgroud-color: #b7acac;
     --buttom-background-primary: #49a9f8;
+
+    --text-color-blue: rgb(0, 170, 255);
+    --text-color-blue-hover: #DA8282;
 }
 
 :root[data-theme='dark']{

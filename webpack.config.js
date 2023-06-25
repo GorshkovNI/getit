@@ -43,9 +43,30 @@ module.exports = {
                     }
                 ]
             },
+            // {
+            //     test: /\.svg$/,
+            //     use: [
+            //         {
+            //             loader: 'svg-url-loader',
+            //             options: {
+            //                 limit: 10000,
+            //             },
+            //         },
+            //     ],
+            // },
+            // {
+            //     test: /\.(png|svg|jpg|jpeg|gif)$/i,
+            //     type: 'asset/resource',
+            // },
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
+                test: /\.svg$/i,
+                type: 'asset',
+                resourceQuery: /url/, // *.svg?url
+            },
+            {
+                test: /\.svg$/i,
+                issuer: /\.[jt]sx?$/,
+                use: [{ loader: '@svgr/webpack', options: { icon: true } }],
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,

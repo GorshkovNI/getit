@@ -1,0 +1,28 @@
+.dropdown{
+
+    /* padding: 8px 0; */
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1),
+    0 0.25rem 0.5rem rgba(0, 0, 0, 0.1), 0 0.125rem 0.125rem rgba(0, 0, 0, 0.1);
+}
+
+.ul{
+    margin: 0;
+    padding: 10px;
+}
+
+.ul li{
+    white-space: nowrap;
+    list-style-type: none;
+    padding: 2px 0;
+    color: var(--text-color-blue);
+    width: 100%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.ul li:hover{
+    color: var(--text-color-blue-hover);
+}
