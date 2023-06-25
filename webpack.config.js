@@ -23,7 +23,7 @@ module.exports = {
             '@src': path.resolve(__dirname, 'src'),
             '@assets': path.resolve(__dirname, 'src/assets'),
             '@shared': path.resolve(__dirname, 'src/shared'),
-            '@utils': path.resolve(__dirname, './src/utils'),
+            '@utils': path.resolve(__dirname, 'src/utils'),
             '@view': path.resolve(__dirname, 'src/views'),
             '@store': path.resolve(__dirname, 'src/store'),
             '@widgets': path.resolve(__dirname, 'src/widgets'),
@@ -43,9 +43,30 @@ module.exports = {
                     }
                 ]
             },
+            // {
+            //     test: /\.svg$/,
+            //     use: [
+            //         {
+            //             loader: 'svg-url-loader',
+            //             options: {
+            //                 limit: 10000,
+            //             },
+            //         },
+            //     ],
+            // },
+            // {
+            //     test: /\.(png|svg|jpg|jpeg|gif)$/i,
+            //     type: 'asset/resource',
+            // },
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
+                test: /\.svg$/i,
+                type: 'asset',
+                resourceQuery: /url/, // *.svg?url
+            },
+            {
+                test: /\.svg$/i,
+                issuer: /\.[jt]sx?$/,
+                use: [{ loader: '@svgr/webpack', options: { icon: true } }],
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -96,6 +117,5 @@ module.exports = {
         port: 8080,
         historyApiFallback: true,
     },
-
     devtool: 'source-map'
 }

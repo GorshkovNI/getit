@@ -1,0 +1,37 @@
+.header{
+    width: 100vw;
+    background-color: #292929;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    margin: 0 15% 0 15%;
+}
+
+.leftSide{
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.center{
+    height: 100%;
+}
+
+.addItem{
+    height: 100%;
+}
+
+.button:hover{
+    filter: brightness(0.85);
+}
+
+.rightSide{
+
+}
+

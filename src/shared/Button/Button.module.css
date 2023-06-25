@@ -1,3 +1,20 @@
 .button{
-    background-color: red;
+    background-color: var(--button-backgroud-color);
+    color: var(--button-text-color);
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.primary{
+    background-color: var(--buttom-background-primary);
+    color: var(--button-text-color);
+}
+
+.transparent{
+    background-color: transparent;
+}
+
+.medium{
+    padding: 5px;
 }
