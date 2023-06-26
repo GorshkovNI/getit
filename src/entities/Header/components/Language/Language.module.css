@@ -1,0 +1,16 @@
+.wrapper{
+    position: relative;
+}
+
+.dropdown{
+    position: absolute;
+}
+
+.input{
+    outline: none;
+    color: var(--text-color-blue);
+    max-width: 50px;
+    padding: 4px;
+}
+
+

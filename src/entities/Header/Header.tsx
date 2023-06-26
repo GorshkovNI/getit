@@ -4,8 +4,12 @@ import {Link} from "react-router-dom";
 import {Button} from "../../shared/Button/Button";
 import cn from 'classnames'
 import {ProfileArea} from "./components/ProfileArea/ProfileArea";
+import {Favorites} from "../../shared/Icons";
+import {Language} from "./components/Language/Language";
+
 
 export const Header = () => {
+
     return(
         <header className={styles.header}>
             <nav className={styles.nav}>
@@ -23,7 +27,9 @@ export const Header = () => {
                     </Link>
                 </div>
                 <div className={styles.rightSide}>
+                    <Favorites className={styles.favorites} />
                     <ProfileArea />
+                    <Language />
                 </div>
             </nav>
         </header>

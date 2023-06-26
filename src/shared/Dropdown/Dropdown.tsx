@@ -12,7 +12,7 @@ export const Dropdown:FC<IDropdown> = ({children, className}) => {
         <div className={cn(styles.dropdown, className)}>
             <ul className={styles.ul}>
                 {React.Children.map(children, (child, index) => {
-                    return <li key={index}>{child}</li>
+                    return <>{child}</>
                 })}
             </ul>
         </div>

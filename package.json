@@ -13,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/preset-typescript": "^7.22.5",
+    "@craco/craco": "^7.1.0",
     "@svgr/webpack": "^8.0.1",
     "@types/compose-function": "0.0.30",
     "@types/react": "^18.2.11",
@@ -41,8 +42,12 @@
     "babel-loader": "^9.1.2",
     "classnames": "^2.3.2",
     "compose-function": "^3.0.3",
+    "i18next": "^23.2.3",
+    "i18next-browser-languagedetector": "^7.0.2",
+    "i18next-http-backend": "^2.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^13.0.1",
     "react-router": "^6.13.0",
     "react-router-dom": "^6.13.0"
   }
