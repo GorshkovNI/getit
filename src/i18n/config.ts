@@ -16,8 +16,8 @@ export const resources = {
 
 i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init({
     ns: ["translation"],
-    defaultNS: "translation", // Добавьте эту опцию
-    supportedLngs:["fr", "en"],
+    defaultNS: "translation",
+    //supportedLngs:["fr", "en"],
     resources,
     debug: true,
     interpolation: {
