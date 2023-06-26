@@ -15,10 +15,11 @@ export const App = () => {
         <StyledEngineProvider injectFirst>
             <BrowserRouter>
                     <Header />
+                <div className={'displayPages'}>
                     <Routes>
                         <Route path='/' element={<MainPage />} />
-                        <Route path='/2' element={<Button mode={'primary'}>Вторая</Button>} />
                     </Routes>
+                </div>
             </BrowserRouter>
         </StyledEngineProvider>
         // <Button mode='primary'>123</Button>
