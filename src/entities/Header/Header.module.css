@@ -32,6 +32,19 @@
 }
 
 .rightSide{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
+.favorites{
+    fill: #aba7a7;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.favorites:hover{
+    filter: brightness(1.3);
 }
 
