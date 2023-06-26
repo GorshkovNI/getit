@@ -56,7 +56,7 @@ export const Slider: FC<ISlider> = ({ photos }) => {
                 setTransitionDuration(TRANSITION_DURATION);
             }
             const newOffset = currentOffset - PAGE_WIDTH;
-            const maxOffset = -(PAGE_WIDTH * (photos?.length ?? 0 - 1));
+            const maxOffset = -(PAGE_WIDTH * (photos? photos?.length - 1 : 0));
             return Math.max(newOffset, maxOffset);
         });
     };

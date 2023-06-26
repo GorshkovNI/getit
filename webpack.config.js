@@ -39,9 +39,14 @@ module.exports = {
                 exclude: /node_module/,
                 use: [
                     {
-                        loader: "babel-loader"
+                        loader: "babel-loader",
                     }
                 ]
+            },
+            {
+                test: /\.(ts|tsx)$/,
+                exclude: /node_modules/,
+                use: 'ts-loader',
             },
 
             // {
@@ -66,29 +71,14 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader'],
             },
-            // {
-            //     test: /\.(sa|sc|c)ss$/,
-            //     use: [
-            //         (mode === 'development') ? "style-loader" : MiniCssExtractPlugin.loader,
-            //         "css-loader",
-            //         {
-            //             loader: "postcss-loader",
-            //             options: {
-            //                 postcssOptions: {
-            //                     plugins: [
-            //                         [
-            //                             "postcss-preset-env",
-            //                             {
-            //                                 // Options
-            //                             },
-            //                         ],
-            //                     ],
-            //                 },
-            //             },
-            //         },
-            //         "sass-loader",
-            //     ],
-            // },
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader', // Добавляет стили в DOM при исполнении кода JavaScript
+                    'css-loader', // Разрешает импорт и обработку CSS файлов
+                    'sass-loader' // Компилирует SCSS в CSS
+                ]
+            }
         ]
     },
 
