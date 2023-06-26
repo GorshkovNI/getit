@@ -7,9 +7,7 @@ const root = document.getElementById('root')
 if(root){
     const rootContainer = ReactDOM.createRoot(root);
     rootContainer.render(
-        <Suspense fallback={<div>Loading...</div>}>
             <App />
-        </Suspense>
     );
 }
 else {

@@ -12,7 +12,7 @@ export const MainPage = () => {
     //     i18n.changeLanguage(language)
     // }
 
-    const {t, i18n} = useTranslation(["en", "fr"]);
+    const {t, i18n} = useTranslation();
     const toggleLanguage = (language: string) => {
         i18n.changeLanguage(language);
     };

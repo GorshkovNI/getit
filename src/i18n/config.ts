@@ -7,21 +7,23 @@ import en from './en/translation.json'
 
 export const resources = {
     fr: {
-        fr
+        translation: fr,
     },
     en: {
-        en
-    }
+        translation: en,
+    },
 };
 
 i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init({
-    ns: ["translation"], // указываем только один namespace "translation"
-    defaultNS: "translation", // указываем namespace по умолчанию
+    ns: ["translation"],
+    defaultNS: "translation", // Добавьте эту опцию
+    supportedLngs:["fr", "en"],
     resources,
     debug: true,
     interpolation: {
         escapeValue: false,
     },
+    fallbackLng: "en"
 });
 
 export default i18n;
