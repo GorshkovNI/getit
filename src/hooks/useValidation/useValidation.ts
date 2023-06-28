@@ -4,6 +4,7 @@ interface IValidation {
     minLength?: number;
     maxLength?: number;
     isEmail?: boolean;
+    isEmpty?: boolean
 }
 
 export const useValidation = (value: string, validations: IValidation ) => {
@@ -22,6 +23,7 @@ export const useValidation = (value: string, validations: IValidation ) => {
     const [minLengthError, setMinLengthError] = useState<boolean>(false)
     const [maxLengthError, setMaxLengthError] = useState<boolean>(false)
     const [emailError, setEmailError] = useState<boolean>(false)
+    const [isEmptyError, setIsEmptyError] = useState<boolean>(false)
 
     useEffect(() => {
         for(const validation in validations){
@@ -48,6 +50,8 @@ export const useValidation = (value: string, validations: IValidation ) => {
                 reg.test(newValue.toLowerCase()) ? setEmailError(false) : setEmailError(true)
                     console.log(newValue)
                 break
+                case 'isEmpty':
+                    newValue.length > 0 ? setIsEmptyError(false) : setIsEmptyError(true)
              }
         }
     }, [newValue])
@@ -60,7 +64,8 @@ export const useValidation = (value: string, validations: IValidation ) => {
         handleOnBlur,
         minLengthError,
         maxLengthError,
-        emailError
+        emailError,
+        isEmptyError
     }
 
 }

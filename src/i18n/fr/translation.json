@@ -1,4 +1,9 @@
 {
   "recomendation": "Des recommandations pour vous",
-  "registration": "Registration"
+  "registration": "Inscription",
+  "name": "Nom",
+  "email": "Email",
+  "password": "Mot de passe",
+  "phone": "Téléphone",
+  "submit": "Soumettre"
 }

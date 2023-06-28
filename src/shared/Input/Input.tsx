@@ -10,17 +10,18 @@ interface IInput{
     onBlur?: () => void,
     value: any,
     error?: boolean
-
+    minLength?: number,
+    maxLength?: number
 }
 
-export const Input:FC<IInput> = ({type, className, placeholder, onChange, value, error , onBlur}, ) => {
+export const Input:FC<IInput> = ({type, className, placeholder, onChange, value, error , onBlur, minLength, maxLength} ) => {
     console.log(error)
     return(
         <div className={cn('container', className, {
             error: error === true
         })}>
             <div className={'area'}>
-                <input type={type} value={value} className={'input'} placeholder={placeholder} onChange={onChange} onBlur={onBlur} />
+                <input type={type} value={value} className={'input'} placeholder={placeholder} onChange={onChange} onBlur={onBlur} minLength={minLength} maxLength={maxLength} />
             </div>
         </div>
     )

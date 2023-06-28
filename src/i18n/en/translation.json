@@ -1,4 +1,9 @@
 {
   "recomendation": "Recommendations for you",
-  "registration": "Inscription"
+  "registration": "Registration",
+  "name": "Name",
+  "email": "Email",
+  "password": "Password",
+  "phone": "Phone",
+  "submit": "Submit"
 }
