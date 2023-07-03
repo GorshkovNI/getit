@@ -5,5 +5,8 @@
   "email": "Email",
   "password": "Mot de passe",
   "phone": "Téléphone",
-  "submit": "Soumettre"
+  "submit": "Soumettre",
+  "auth": "Entrée",
+  "offerRegistration": "Si vous n'avez pas de compte, inscrivez-vous",
+  "offerAuth": "Si vous avez un compte, veuillez vous connecter"
 }

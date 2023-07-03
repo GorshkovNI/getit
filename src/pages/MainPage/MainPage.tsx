@@ -1,9 +1,7 @@
 import React from "react";
 import styles from './MainPage.module.css'
 import {useTranslation} from "react-i18next";
-import {CardAd} from "../../entities/CardAd/CardAd";
-import {Modal} from "../../shared/Modal/Modal";
-import {Registration} from "../../entities/Header/Autorization/Registation/Registration";
+import {Authorization} from "../../entities/Header/Autorization/Authorization";
 
 export const MainPage = () => {
 
@@ -25,7 +23,8 @@ export const MainPage = () => {
                     {/*<CardAd />*/}
                     {/*<CardAd />*/}
                     {/*<CardAd />*/}
-                    <Registration />
+                    {/*<Registration />*/}
+                    <Authorization />
                 </div>
             </div>
         </main>

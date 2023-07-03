@@ -5,18 +5,18 @@
     width: 100%;
     height: 100%;
     z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
-.overlay{
+.overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
 }
 
-.content{
+.content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -26,7 +26,7 @@
     border-radius: 10px;
 }
 
-.closeButton{
+.closeButton {
     position: absolute;
     top: -5px;
     right: -45px;
@@ -34,16 +34,16 @@
     height: 40px;
     font-size: 20px;
     font-weight: bold;
-    fill: rgb(214, 214, 214);;
+    fill: rgb(214, 214, 214);
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.closeButton:hover{
+.closeButton:hover {
     filter: brightness(1.2);
 }
 
-.closeButton:focus{
+.closeButton:focus {
     outline: none;
 }

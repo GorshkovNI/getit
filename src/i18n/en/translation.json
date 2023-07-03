@@ -5,5 +5,8 @@
   "email": "Email",
   "password": "Password",
   "phone": "Phone",
-  "submit": "Submit"
+  "submit": "Submit",
+  "auth": "Auth",
+  "offerRegistration": "If you don't have an account, register",
+  "offerAuth": "If you have an account, please login"
 }

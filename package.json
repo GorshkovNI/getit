@@ -26,6 +26,7 @@
     "html-webpack-plugin": "^5.5.3",
     "image-webpack-loader": "^8.1.0",
     "mini-css-extract-plugin": "^2.7.6",
+    "node-sass": "^5.0.0",
     "prettier": "2.8.8",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.4.3",
@@ -42,6 +43,8 @@
     "@emotion/styled": "^11.11.0",
     "@material-ui/icons": "^4.11.3",
     "@mui/material": "^5.13.5",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@types/react-redux": "^7.1.25",
     "async": "^3.2.4",
     "axios": "^1.4.0",
     "babel-loader": "^9.1.2",
@@ -54,8 +57,10 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.0",
     "react-i18next": "^13.0.1",
+    "react-redux": "^8.1.1",
     "react-router": "^6.13.0",
     "react-router-dom": "^6.13.0",
+    "redux-thunk": "^2.4.2",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2"
   }
