@@ -1,5 +1,8 @@
-import {createSlice, createAsyncThunk, PayloadAction, Draft} from '@reduxjs/toolkit';
-import { fetchUsersFromApi } from '../../app/userApi/userApi';
+import {createSlice, createAsyncThunk, PayloadAction, Draft, ThunkDispatch} from '@reduxjs/toolkit';
+import UserApi from "../../app/userApi/userApi";
+import {IUserCreate} from "./userInteface";
+import {AppDispatch, RootState} from "../index";
+
 
 interface User {
     id: number;
@@ -20,32 +23,46 @@ const initialState: UsersState = {
     error: null,
 };
 
-export const fetchUsers = createAsyncThunk(
-    'users/fetchUsers',
-    async () => {
-        const response = await fetchUsersFromApi();
-        return response;
+export const createUser = createAsyncThunk(
+    'users/createUser',
+    async (data: IUserCreate, { dispatch }) => {
+        try {
+            const response = await UserApi.createUser(data);
+            console.log(response)
+            // Dispatch actions here if needed
+        } catch (e) {
+            console.log('Ошибка => ', e);
+        }
     }
 );
 
 const usersSlice = createSlice({
     name: 'users',
     initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-        builder
-            .addCase(fetchUsers.pending, (state: Draft<UsersState>) => {
-                state.loading = 'pending';
-            })
-            .addCase(fetchUsers.fulfilled, (state: Draft<UsersState>, action) => {
-                state.loading = 'succeeded';
-                state.entities = action.payload;
-            })
-            .addCase(fetchUsers.rejected, (state: Draft<UsersState>, action) => {
-                state.loading = 'failed';
-                state.error = action.error.message || null;
-            })
+    reducers: {
+        setIsLoading(state){
+            state.loading = 'pending'
+        }
     },
+    extraReducers: (builder) => {
+        builder.addCase(createUser.pending, (state) => {
+            state.loading = 'pending';
+        });
+        builder.addCase(createUser.fulfilled, (state) => {
+            state.loading = 'succeeded';
+        });
+        builder.addCase(createUser.rejected, (state) => {
+            state.loading = 'failed';
+        });
+    }
 });
+
+// export const createUser = (data:IUserCreate) => async (dispatch: ThunkDispatch<AppDispatch, RootState, any>) => {
+//     try{
+//         const response = await UserApi.createUser(data)
+//     }catch (e){
+//         console.log('Ошибка => ', e)
+//     }
+// }
 
 export default usersSlice.reducer;

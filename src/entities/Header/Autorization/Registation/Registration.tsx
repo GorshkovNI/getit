@@ -5,6 +5,12 @@ import {useTranslation} from "react-i18next";
 import {Input} from "../../../../shared/Input/Input";
 import {useValidation} from "../../../../hooks/useValidation/useValidation";
 import {Button} from "../../../../shared/Button/Button";
+import {useAppDispatch} from "../../../../hooks/useAppDispatch/useAppDispatch";
+import {IUserCreate} from "../../../../store/user/userInteface";
+import {createUser} from "../../../../store/user/userSlice";
+import {useDispatch} from "react-redux";
+import {AnyAction, ThunkDispatch} from "@reduxjs/toolkit";
+import {AppDispatch, RootState} from "../../../../store";
 
 interface IRegistration{
     className?: string,
@@ -14,17 +20,28 @@ interface IRegistration{
 export const Registration:FC<IRegistration> = ({className, onToggleComponent}) => {
 
     const {t} = useTranslation();
+    const dispatch: ThunkDispatch<AppDispatch, RootState, AnyAction> = useDispatch();
 
     const email = useValidation('', { isEmail: true })
     const password = useValidation('', {minLength: 3, maxLength: 20})
     const name = useValidation('', {isEmpty: true})
     const phone = useValidation('', {isEmpty: true})
 
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+        const userData: IUserCreate = {
+            name: 'John Doe',
+            email: 'j1ohn@example.com',
+            password: '123',
+            phone_number: '+79123123121'
+        };
+        dispatch(createUser(userData));
+    };
 
     return(
         <div className={className}>
             <h1 className={'title'}>{t('registration')}</h1>
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={handleSubmit}>
                 <Input
                     error={name.isDirty && name.isEmptyError}
                     onBlur={() => name.handleOnBlur()}
