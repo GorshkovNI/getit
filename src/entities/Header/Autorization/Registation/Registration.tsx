@@ -12,7 +12,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AnyAction, ThunkDispatch} from "@reduxjs/toolkit";
 //import {AppDispatch, RootState} from "../../../../store";
 import {AppDispatch, RootState} from ".././../../../@types/dispatch"
-import {getIsLoading} from "../../../../store/user/userSelector";
+import {getError, getIsLoading} from "../../../../store/user/userSelector";
 import {Preloader} from "../../../../shared/Preloader/Preloader";
 
 interface IRegistration{
@@ -27,7 +27,9 @@ export const Registration:FC<IRegistration> = ({className, onToggleComponent}) =
     const dispatch: AppDispatch = useDispatch()
 
     const isLoading = useSelector(getIsLoading)
+    const arrError = useSelector(getError)
     console.log(isLoading)
+    console.log(arrError)
 
     const email = useValidation('', { isEmail: true })
     const password = useValidation('', {minLength: 3, maxLength: 20})
