@@ -22,3 +22,8 @@
 .big{
     padding: 10px;
 }
+
+.button:disabled{
+    cursor: auto;
+    background-color: rgba(178, 158, 158, 0.35);
+}

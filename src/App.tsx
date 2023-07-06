@@ -18,7 +18,7 @@ export const App = () => {
                     <Header />
                 <div className={'displayPages'}>
                     <Routes>
-                        <Route path='/' element={<Profile />} />
+                        <Route path='/' element={<MainPage />} />
                     </Routes>
                 </div>
             </BrowserRouter>

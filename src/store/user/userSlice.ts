@@ -32,6 +32,7 @@ export const createUser = createAsyncThunk(
             // Dispatch actions here if needed
         } catch (e) {
             console.log('Ошибка => ', e);
+            throw e;1
         }
     }
 );
@@ -57,12 +58,6 @@ const usersSlice = createSlice({
     }
 });
 
-// export const createUser = (data:IUserCreate) => async (dispatch: ThunkDispatch<AppDispatch, RootState, any>) => {
-//     try{
-//         const response = await UserApi.createUser(data)
-//     }catch (e){
-//         console.log('Ошибка => ', e)
-//     }
-// }
+
 
 export default usersSlice.reducer;

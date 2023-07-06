@@ -15,7 +15,7 @@ interface IInput{
 }
 
 export const Input:FC<IInput> = ({type, className, placeholder, onChange, value, error , onBlur, minLength, maxLength} ) => {
-    console.log(error)
+
     return(
         <div className={cn('container', className, {
             error: error === true

@@ -55,7 +55,7 @@ module.exports = {
             },
             {
                 test: /\.svg$/i,
-                type: 'asset',
+                type: 'asset/inline',
                 resourceQuery: /url/, // *.svg?url
             },
             {

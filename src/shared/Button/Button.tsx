@@ -27,7 +27,7 @@ export const Button:FC<IButton> = ({className, children, onClick, mode, disabled
     )
 
     return (
-        <button className={buttonClassName}>
+        <button className={buttonClassName} disabled={disabled}>
             {children}
         </button>
     )

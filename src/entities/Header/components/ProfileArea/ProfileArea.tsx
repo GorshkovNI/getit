@@ -21,6 +21,7 @@ export const ProfileArea = () => {
     return(
             <div className={styles.wrapper} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <div className={styles.profileInfo}>
+
                     <Avatar className={styles.avatar} sx={{width: 30, height: 30}}>H</Avatar>
                     <span>Name</span>
                     <Arrow className={styles.arrow} />
@@ -32,6 +33,7 @@ export const ProfileArea = () => {
                         </Dropdown>
                     </div>
                     }
+
                 </div>
             </div>
 

@@ -8,9 +8,12 @@ import {Button} from "../../../../shared/Button/Button";
 import {useAppDispatch} from "../../../../hooks/useAppDispatch/useAppDispatch";
 import {IUserCreate} from "../../../../store/user/userInteface";
 import {createUser} from "../../../../store/user/userSlice";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {AnyAction, ThunkDispatch} from "@reduxjs/toolkit";
-import {AppDispatch, RootState} from "../../../../store";
+//import {AppDispatch, RootState} from "../../../../store";
+import {AppDispatch, RootState} from ".././../../../@types/dispatch"
+import {getIsLoading} from "../../../../store/user/userSelector";
+import {Preloader} from "../../../../shared/Preloader/Preloader";
 
 interface IRegistration{
     className?: string,
@@ -20,7 +23,11 @@ interface IRegistration{
 export const Registration:FC<IRegistration> = ({className, onToggleComponent}) => {
 
     const {t} = useTranslation();
-    const dispatch: ThunkDispatch<AppDispatch, RootState, AnyAction> = useDispatch();
+    //const dispatch: ThunkDispatch<AppDispatch, RootState, AnyAction> = useDispatch();
+    const dispatch: AppDispatch = useDispatch()
+
+    const isLoading = useSelector(getIsLoading)
+    console.log(isLoading)
 
     const email = useValidation('', { isEmail: true })
     const password = useValidation('', {minLength: 3, maxLength: 20})
@@ -30,13 +37,24 @@ export const Registration:FC<IRegistration> = ({className, onToggleComponent}) =
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         const userData: IUserCreate = {
-            name: 'John Doe',
-            email: 'j1ohn@example.com',
-            password: '123',
-            phone_number: '+79123123121'
+            name: name.newValue,
+            email: email.newValue,
+            password: password.newValue,
+            phone_number: phone.newValue
         };
         dispatch(createUser(userData));
     };
+
+    const readySubmit = (): boolean => {
+        if(!name.isEmptyError && !email.emailError && !password.minLengthError && !password.maxLengthError){
+            return false
+        }
+        return true
+    }
+
+    if(isLoading === 'pending'){
+        return <Preloader />
+    }
 
     return(
         <div className={className}>
@@ -78,7 +96,7 @@ export const Registration:FC<IRegistration> = ({className, onToggleComponent}) =
                     minLength={3}
                     maxLength={20}
                 />
-                <Button className={'submit'} size={'big'} mode={'primary'}>{t('submit')}</Button>
+                <Button disabled={readySubmit()} className={'submit'} size={'big'} mode={'primary'}>{t('submit')}</Button>
             </form>
         </div>
     )

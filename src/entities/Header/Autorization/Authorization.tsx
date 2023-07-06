@@ -9,7 +9,7 @@ export const Authorization = () => {
 
     const {t} = useTranslation();
 
-    const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+    const [isOpenModal, setIsOpenModal] = useState<boolean>(true);
     
     const closeModal = () => {
         setIsOpenModal(false);
