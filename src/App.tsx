@@ -6,6 +6,7 @@ import {Button} from "./shared/Button/Button";
 import {Header} from "./entities/Header/Header";
 import { useTheme } from "./hooks/theme/use-theme";
 import { StyledEngineProvider } from "@mui/material";
+import { Profile } from "./pages/Profile/Profile";
 
 export const App = () => {
 
@@ -17,7 +18,7 @@ export const App = () => {
                     <Header />
                 <div className={'displayPages'}>
                     <Routes>
-                        <Route path='/' element={<MainPage />} />
+                        <Route path='/' element={<Profile />} />
                     </Routes>
                 </div>
             </BrowserRouter>
