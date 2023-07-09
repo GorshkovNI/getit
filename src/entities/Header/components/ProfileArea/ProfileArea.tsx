@@ -1,14 +1,19 @@
 import React, {useState} from "react";
 import styles from './ProfileArea.module.css'
 import {Avatar } from "@mui/material";
-import {Dropdown} from "../../../../shared/Dropdown/Dropdown";
+import {Dropdown} from "@shared/Dropdown/Dropdown";
 //import Arrow from '../../../../shared/Icons/Icon/arrow.svg'
 import {Arrow} from "../../../../shared/Icons";
+import {useSelector} from "react-redux";
+import {getIsAuth, getIsLoading} from "@store/user/userSelector";
 
 
 export const ProfileArea = () => {
 
     const [isOpen, setIsOpen] = useState<boolean>(false)
+
+    const isLoading = useSelector(getIsLoading)
+    const isAuth = useSelector(getIsAuth)
 
     const handleMouseEnter = () => {
         setIsOpen(true)
@@ -16,6 +21,10 @@ export const ProfileArea = () => {
 
     const handleMouseLeave = () => {
         setIsOpen(false)
+    }
+
+    if(!isAuth){
+        return(<div>Войти/Зарегистрироваться</div>)
     }
 
     return(

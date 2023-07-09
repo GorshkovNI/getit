@@ -1,30 +1,34 @@
 import {createSlice, createAsyncThunk, PayloadAction, Draft, ThunkDispatch} from '@reduxjs/toolkit';
 import UserApi from "../../app/userApi/userApi";
-import {IUserCreate} from "./userInteface";
-import {AppDispatch, RootState} from "../index";
-import {AxiosError} from "axios";
+import {AuthResponse, IUser, IUserCreate, IUserLogin} from "./userInteface";
+import axios, {AxiosError} from "axios";
+import {API_URL} from "@src/app/http";
 
-
-interface User {
-    id: number;
-    name: string;
-    email: string;
-    // и так далее
-}
 
 interface ErrorPayload {
+    status?: number,
     message?: string;
     errors?: string[];
 }
 
 interface UsersState {
-    entities: User[];
+    //entities: User[];
+    user: IUser;
+    isAuth: boolean;
     loading: 'idle' | 'pending' | 'succeeded' | 'failed';
     error: ErrorPayload | null;
 }
 
 const initialState: UsersState = {
-    entities: [],
+    //entities: [],
+    user:{
+        name: '',
+        id: '',
+        email: '',
+        phone: '',
+        photo: ''
+    },
+    isAuth: false,
     loading: 'idle',
     error: null,
 };
@@ -39,9 +43,49 @@ export const createUser = createAsyncThunk(
             const axiosError = error as AxiosError; // Приводим error к типу AxiosError
             if (axiosError.response) {
                 return rejectWithValue(axiosError.response.data);
-            } else {
-                return rejectWithValue(axiosError.message);
             }
+            // else {
+            //     return rejectWithValue(axiosError.message);
+            // }
+        }
+    }
+);
+
+export const login = createAsyncThunk(
+    'users/login',
+    async (data: IUserLogin, { rejectWithValue }) => {
+        try {
+            const response = await UserApi.login(data);
+            console.log(response.data)
+            localStorage.setItem('token', response.data.accessToken)
+            return response.data;
+        } catch (error) {
+            const axiosError = error as AxiosError; // Приводим error к типу AxiosError
+            if (axiosError.response) {
+                return rejectWithValue(axiosError.response.data);
+            }
+            // else {
+            //     return rejectWithValue(axiosError.message);
+            // }
+        }
+    }
+);
+
+export const checkAuth = createAsyncThunk(
+    'users/checkAuth',
+    async (_, {rejectWithValue}) => {
+        try {
+            const response = await axios.get<AuthResponse>(`${API_URL}refresh`, {withCredentials: true})
+            localStorage.setItem('token', response.data.accessToken);
+            console.log(response.data)
+            return response.data;
+        } catch (error) {
+            const axiosError = error as AxiosError;
+            console.log(axiosError)
+            return rejectWithValue(axiosError.message);
+            // else {
+            //     return rejectWithValue(axiosError.message);
+            // }
         }
     }
 );
@@ -50,31 +94,59 @@ const usersSlice = createSlice({
     name: 'users',
     initialState,
     reducers: {
-        setIsLoading(state){
-            state.loading = 'pending'
+        setIsAuth(state){
+            state.isAuth = true
+        },
+        removeIsAuth(state){
+            state.isAuth = false
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(createUser.pending, (state) => {
+        // CREATE USER
+        builder.addCase(createUser.pending, (state:UsersState) => {
             state.loading = 'pending';
         });
-        builder.addCase(createUser.fulfilled, (state) => {
+        builder.addCase(createUser.fulfilled, (state:UsersState) => {
             state.loading = 'succeeded';
         });
-        builder.addCase(createUser.rejected, (state, action) => {
+        builder.addCase(createUser.rejected, (state:UsersState, action) => {
             state.loading = 'failed';
-            console.log(action.payload)
             if (action.payload) {
-                if (typeof action.payload === 'string') {
-                    state.error = { message: action.payload };
-                } else {
-                    state.error = action.payload;
-                }
+                 state.error = action.payload as ErrorPayload;
             }
         });
+
+        // LOGIN
+        builder.addCase(login.pending, (state: UsersState) => {
+            state.loading = 'pending';
+        })
+        builder.addCase(login.fulfilled, (state: UsersState, action:PayloadAction<AuthResponse>) => {
+            state.loading = 'succeeded';
+            state.user = action.payload.user;
+            state.isAuth = true;
+        })
+        builder.addCase(login.rejected, (state: UsersState, action) => {
+            state.loading = 'failed';
+            if (action.payload) {
+                state.error = action.payload as ErrorPayload;
+            }
+        })
+        // CheckAuth
+        builder.addCase(checkAuth.pending, (state: UsersState) => {
+            state.loading = 'pending';
+        })
+        builder.addCase(checkAuth.fulfilled, (state: UsersState, action:PayloadAction<AuthResponse>) => {
+            state.loading = 'succeeded';
+            state.user = action.payload.user;
+            state.isAuth = true;
+        })
+        builder.addCase(checkAuth.rejected, (state: UsersState, action) => {
+            state.loading = 'failed';
+            if (action.payload) {
+                state.error = action.payload as ErrorPayload;
+            }
+        })
     }
 });
-
-
 
 export default usersSlice.reducer;

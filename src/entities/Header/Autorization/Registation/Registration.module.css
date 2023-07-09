@@ -18,3 +18,7 @@
 .submit:hover{
   filter: brightness(1.05);
 }
+
+.error{
+  color: var(--text-color-blue-hover);
+}

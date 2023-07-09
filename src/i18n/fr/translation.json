@@ -1,4 +1,5 @@
 {
+  "": "",
   "recomendation": "Des recommandations pour vous",
   "registration": "Inscription",
   "name": "Nom",
@@ -8,5 +9,6 @@
   "submit": "Soumettre",
   "auth": "Entrée",
   "offerRegistration": "Si vous n'avez pas de compte, inscrivez-vous",
-  "offerAuth": "Si vous avez un compte, veuillez vous connecter"
+  "offerAuth": "Si vous avez un compte, veuillez vous connecter",
+  "exists": "L'utilisateur existe déjà"
 }
