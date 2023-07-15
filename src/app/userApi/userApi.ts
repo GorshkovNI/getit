@@ -12,6 +12,10 @@ export default class UserApi{
         return $api.post('login', data)
     }
 
+    static async logout(){
+        return $api.get('logout')
+    }
+
 }
 // export const fetchUsersFromApi = async () => {
 //     const response = await axios.get('https://example.com/api/users');

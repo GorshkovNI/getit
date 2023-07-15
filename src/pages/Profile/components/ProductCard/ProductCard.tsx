@@ -1,9 +1,12 @@
-import React from "react";
+import React, {FC} from "react";
 import styles from './ProductCard.module.css'
 import car from './car.jpg'
 
+interface IProductCard{
 
-export const ProductCard = () => {
+}
+
+export const ProductCard:FC<IProductCard> = () => {
     return(
         <div className={styles.container}>
             <img className={styles.image} src={car}/>

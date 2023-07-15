@@ -2,3 +2,27 @@
     background-color: #d4e34a;
     font-size: 44px;
 }
+
+.name{
+    font-weight: bold;
+    font-size: 24px;
+    margin: 10px;
+}
+
+.reviews{
+    display: flex;
+    gap: 10px;
+}
+
+.showReviews{
+    cursor: pointer;
+    color: var(--text-color-blue);
+}
+
+.showReviews:hover{
+    color: var(--text-color-blue-hover);
+}
+
+.buttonAdd{
+    font-weight: bold;
+}

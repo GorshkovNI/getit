@@ -8,12 +8,16 @@
   flex-direction: column;
   gap: 10px;
   padding: 20px;
+}
 
-  .input {
-    width: 450px;
-  }
+.input {
+  width: 450px;
+}
 
-  .submit:hover{
-    filter: brightness(1.05);
-  }
+.submit:hover{
+  filter: brightness(1.05);
+}
+
+.error{
+  color: var(--text-color-blue-hover);
 }

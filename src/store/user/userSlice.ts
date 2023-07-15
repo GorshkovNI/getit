@@ -1,6 +1,6 @@
 import {createSlice, createAsyncThunk, PayloadAction, Draft, ThunkDispatch} from '@reduxjs/toolkit';
 import UserApi from "../../app/userApi/userApi";
-import {AuthResponse, IUser, IUserCreate, IUserLogin} from "./userInteface";
+import {AuthResponse, IAds, IUser, IUserCreate, IUserLogin} from "./userInteface";
 import axios, {AxiosError} from "axios";
 import {API_URL} from "@src/app/http";
 
@@ -14,6 +14,7 @@ interface ErrorPayload {
 interface UsersState {
     //entities: User[];
     user: IUser;
+    ads: IAds[]
     isAuth: boolean;
     loading: 'idle' | 'pending' | 'succeeded' | 'failed';
     error: ErrorPayload | null;
@@ -28,6 +29,7 @@ const initialState: UsersState = {
         phone: '',
         photo: ''
     },
+    ads: [],
     isAuth: false,
     loading: 'idle',
     error: null,
@@ -90,6 +92,24 @@ export const checkAuth = createAsyncThunk(
     }
 );
 
+export const logout = createAsyncThunk(
+    'users/logout',
+    async (_, {rejectWithValue}) => {
+        try {
+            const response = await UserApi.logout()
+            localStorage.removeItem('token');
+            return response;
+        } catch (error) {
+            const axiosError = error as AxiosError;
+            console.log(axiosError)
+            return rejectWithValue(axiosError.message);
+            // else {
+            //     return rejectWithValue(axiosError.message);
+            // }
+        }
+    }
+);
+
 const usersSlice = createSlice({
     name: 'users',
     initialState,
@@ -99,6 +119,9 @@ const usersSlice = createSlice({
         },
         removeIsAuth(state){
             state.isAuth = false
+        },
+        clearError(state) {
+            state.error = null;
         }
     },
     extraReducers: (builder) => {
@@ -146,7 +169,24 @@ const usersSlice = createSlice({
                 state.error = action.payload as ErrorPayload;
             }
         })
+
+        // LOGOUT
+        builder.addCase(logout.pending, (state: UsersState) => {
+            state.loading = 'pending';
+        })
+        builder.addCase(logout.fulfilled, (state: UsersState) => {
+            state.loading = 'succeeded';
+            state.user = {} as IUser;
+            state.isAuth = false;
+        })
+        builder.addCase(logout.rejected, (state: UsersState, action) => {
+            state.loading = 'failed';
+            if (action.payload) {
+                state.error = action.payload as ErrorPayload;
+            }
+        })
     }
 });
 
+export const { setIsAuth, removeIsAuth, clearError } = usersSlice.actions;
 export default usersSlice.reducer;

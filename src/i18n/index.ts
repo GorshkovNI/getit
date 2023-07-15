@@ -10,4 +10,5 @@ export type TranslationKeys =
     "auth" |
     "offerRegistration" |
     "offerAuth" |
-    "exists";
+    "exists" |
+    "notExists";

@@ -2,6 +2,7 @@ import React from "react";
 import styles from './MainPage.module.css'
 import {useTranslation} from "react-i18next";
 import {Authorization} from "../../entities/Header/Autorization/Authorization";
+import {CardAd} from "@entities/CardAd/CardAd";
 
 export const MainPage = () => {
 
@@ -15,16 +16,14 @@ export const MainPage = () => {
             </div>
             <div className={styles.productArea}>
                 <div className={styles.products}>
-                    {/*<CardAd />*/}
-                    {/*<CardAd />*/}
-                    {/*<CardAd />*/}
-                    {/*<CardAd />*/}
-                    {/*<CardAd />*/}
-                    {/*<CardAd />*/}
-                    {/*<CardAd />*/}
-                    {/*<CardAd />*/}
-                    {/*<Registration />*/}
-                    <Authorization />
+                    <CardAd />
+                    <CardAd />
+                    <CardAd />
+                    <CardAd />
+                    <CardAd />
+                    <CardAd />
+                    <CardAd />
+                    <CardAd />
                 </div>
             </div>
         </main>

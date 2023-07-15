@@ -10,5 +10,6 @@
   "auth": "Auth",
   "offerRegistration": "If you don't have an account, register",
   "offerAuth": "If you have an account, please login",
-  "exists": "User already exists"
+  "exists": "User already exists",
+  "notExists": "Incorrect login or password"
 }

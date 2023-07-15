@@ -20,8 +20,21 @@ export interface IUser{
     photo: string
 }
 
+export interface IAds{
+    id: string,
+    title: string,
+    description: string,
+    price: number,
+    photo: string[],
+    city: string,
+    up: boolean,
+    category_id: string
+}
+
 export interface AuthResponse {
     accessToken: string;
     refreshToken: string;
     user: IUser;
 }
+
+

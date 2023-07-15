@@ -5,6 +5,8 @@
 
     --text-color-blue: rgb(0, 170, 255);
     --text-color-blue-hover: #DA8282;
+    --text-color-white: #ffffff;
+    --text-color-white-hover: #d2cece;
 }
 
 :root[data-theme='dark']{

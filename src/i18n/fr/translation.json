@@ -1,7 +1,7 @@
 {
   "": "",
   "recomendation": "Des recommandations pour vous",
-  "registration": "Inscription",
+  "registration": "Enregistrement",
   "name": "Nom",
   "email": "Email",
   "password": "Mot de passe",
@@ -10,5 +10,6 @@
   "auth": "Entrée",
   "offerRegistration": "Si vous n'avez pas de compte, inscrivez-vous",
   "offerAuth": "Si vous avez un compte, veuillez vous connecter",
-  "exists": "L'utilisateur existe déjà"
+  "exists": "L'utilisateur existe déjà",
+  "notExists": "Identifiant ou mot de passe incorrect"
 }

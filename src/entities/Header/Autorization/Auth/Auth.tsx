@@ -1,25 +1,37 @@
 import React, {FC, useState} from "react";
-import './Auth.scss'
-import {Modal} from "../../../../shared/Modal/Modal";
+import styles from './Auth.module.css'
 import {useTranslation} from "react-i18next";
-import {Input} from "../../../../shared/Input/Input";
-import {useValidation} from "../../../../hooks/useValidation/useValidation";
-import {Button} from "../../../../shared/Button/Button";
+import {Input} from "@shared/Input/Input";
+import {useValidation} from "@src/hooks/useValidation/useValidation";
+import {Button} from "@shared/Button/Button";
 import {IUserCreate, IUserLogin} from "@store/user/userInteface";
 import {login} from "@store/user/userSlice";
 import {AppDispatch} from "@src/@types/dispatch";
 import {useDispatch, useSelector} from "react-redux";
-import {getAllInfo} from "@store/user/userSelector";
+import {getError, getIsLoading} from "@store/user/userSelector";
+import {TranslationKeys} from "@src/i18n";
+import {Preloader} from "@shared/Preloader/Preloader";
 
 interface IAuth{
     className?: string,
-    onToggleComponent?: () => void
+    onToggleComponent?: () => void,
+    closeModal: () => void
 }
 
-export const Auth:FC<IAuth> = ({className, onToggleComponent}) => {
+export const Auth:FC<IAuth> = ({className, onToggleComponent, closeModal}) => {
 
     const {t} = useTranslation();
     const dispatch: AppDispatch = useDispatch()
+
+    const isLoading = useSelector(getIsLoading)
+    const error = useSelector(getError)
+
+    let errorKey: TranslationKeys = '';
+    switch(error) {
+        case 'notExists':
+            errorKey = 'notExists';
+            break;
+    }
 
     const email = useValidation('', { isEmail: true })
     const password = useValidation('', {minLength: 3, maxLength: 20})
@@ -38,16 +50,17 @@ export const Auth:FC<IAuth> = ({className, onToggleComponent}) => {
             password: password.newValue,
         };
         dispatch(login(userData));
+
     };
 
-    const allInfo = useSelector(getAllInfo)
-    console.log(allInfo)
-
+    if(isLoading === 'pending'){
+        return <Preloader />
+    }
 
     return(
         <div className={className}>
-            <h1 className={'title'}>{t('auth')}</h1>
-            <form className={'form'} onSubmit={handleSubmit}>
+            <h1 className={styles.title}>{t('auth')}</h1>
+            <form className={styles.form} onSubmit={handleSubmit}>
                 <Input
                     error={email.isDirty && email.emailError}
                     onBlur={() => email.handleOnBlur()}
@@ -55,7 +68,7 @@ export const Auth:FC<IAuth> = ({className, onToggleComponent}) => {
                     value={email.newValue}
                     onChange={email.handleNewValue}
                     placeholder={t('email')}
-                    className='input' />
+                    className={styles.input} />
                 <Input
                     error={password.isDirty && password.minLengthError || password.maxLengthError}
                     onBlur={() => password.handleOnBlur()}
@@ -63,11 +76,12 @@ export const Auth:FC<IAuth> = ({className, onToggleComponent}) => {
                     value={password.newValue}
                     onChange={password.handleNewValue}
                     placeholder={t('password')}
-                    className='input'
+                    className={styles.input}
                     minLength={3}
                     maxLength={20}
                 />
                 <Button disabled={readySubmit()} className={'submit'} size={'big'} mode={'primary'}>{t('submit')}</Button>
+                {error ? <span className={styles.error}>{t(errorKey)}</span>: ""}
             </form>
         </div>
     )
