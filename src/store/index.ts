@@ -1,10 +1,12 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import usersReducer from './user/userSlice';
+import advertisementSlice from "@store/advertisement/advertisementSlice";
 
 export const store = configureStore({
     reducer: {
         users: usersReducer,
+        advertisement: advertisementSlice
     },
     middleware: [thunk],
 });

@@ -1,5 +1,3 @@
-// /src/api/usersApi.ts
-import axios from 'axios';
 import $api from "../http";
 import {IUserCreate, IUserLogin} from "@store/user/userInteface";
 
@@ -17,7 +15,3 @@ export default class UserApi{
     }
 
 }
-// export const fetchUsersFromApi = async () => {
-//     const response = await axios.get('https://example.com/api/users');
-//     return response.data;
-// };
