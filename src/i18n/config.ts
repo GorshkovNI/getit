@@ -23,7 +23,8 @@ i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init({
     interpolation: {
         escapeValue: false,
     },
-    fallbackLng: "en"
+    fallbackLng: "fr",
+    lng: "fr"
 });
 
 export default i18n;

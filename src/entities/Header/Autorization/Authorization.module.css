@@ -1,0 +1,47 @@
+
+.container{
+  display: flex;
+}
+
+.slideOutLeft {
+  animation: slideOutLeft 0.5s forwards;
+}
+
+.slideOutRight {
+  animation: slideOutRight 0.5s forwards;
+}
+
+.toggle{
+  color: var(--text-color-blue);
+  cursor: pointer;
+}
+
+.toggle:hover{
+  color: var(--text-color-blue-hover);
+}
+
+
+
+@keyframes slideOutLeft {
+  0% {
+    transform: translateX(-200%);
+    opacity: 0;
+
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  0% {
+    transform: translateX(200%);
+    opacity: 0;
+  }
+  100% {
+
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

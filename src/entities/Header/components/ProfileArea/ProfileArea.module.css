@@ -3,7 +3,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--button-text-color);
 }
 
 .avatar{
@@ -13,10 +12,11 @@
 .dropdownArea{
     top: 25px;
     position: absolute;
+    z-index: 999;
 }
 
 .dropdown{
-    margin-top: 10px    ;
+    margin-top: 10px;
 }
 
 .arrow{
@@ -31,4 +31,31 @@
 .wrapper .arrow {
     transform: rotate(0deg);
     transition: transform 100ms ease-in;
+}
+
+.loading{
+    cursor: pointer;
+    color: var(--text-color-white);
+}
+
+.authorization{
+    color: var(--text-color-white);
+    cursor: pointer;
+}
+
+.authorization:hover{
+    color: var(--text-color-white-hover);
+}
+
+.name{
+    color: var(--button-text-color);
+    cursor: pointer;
+}
+
+.name:hover{
+    color: var(--text-color-blue-hover);
+}
+
+.link{
+    text-decoration: none;
 }

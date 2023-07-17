@@ -1,0 +1,31 @@
+.wrapper{
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #b2adad;
+}
+
+.title{
+    color: #b2adad;
+    padding: 10px;
+}
+
+.containerItem{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.item{
+    padding: 5px 10px 10px 10px;
+    cursor: pointer;
+}
+
+.item:hover{
+    background-color: rgba(73, 169, 248, 0.3);
+}
+
+.item.active{
+    background-color: rgba(73, 169, 248, 0.72);
+}

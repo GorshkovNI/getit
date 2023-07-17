@@ -8,7 +8,7 @@ import {useTranslation} from "react-i18next";
 
 export const Language = () => {
 
-    const [language, setLanguage] = useState<string>('EN')
+    const [language, setLanguage] = useState<string>(localStorage.getItem('i18nextLng')?.toUpperCase() || 'EN')
     const [isOpen, setIsOpen] = useState<boolean>(false)
 
     const {i18n} = useTranslation();

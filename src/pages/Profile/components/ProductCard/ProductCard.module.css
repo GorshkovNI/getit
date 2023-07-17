@@ -1,0 +1,29 @@
+.container{
+    z-index: 10;
+    display: flex;
+    gap: 20px;
+}
+
+.image{
+    width: 250px;
+    height: 150px;
+}
+
+.infoAds{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    margin: 0 0 10px 0;
+}
+
+.price{
+    margin: 0 0 10px 0;
+}
+
+.city{
+    position: absolute;
+    bottom: 0;
+}

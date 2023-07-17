@@ -1,3 +1,15 @@
 {
-  "title": "Welcome to react using react-i18next fully type-safe"
+  "": "",
+  "recomendation": "Recommendations for you",
+  "registration": "Registration",
+  "name": "Name",
+  "email": "Email",
+  "password": "Password",
+  "phone": "Phone",
+  "submit": "Submit",
+  "auth": "Auth",
+  "offerRegistration": "If you don't have an account, register",
+  "offerAuth": "If you have an account, please login",
+  "exists": "User already exists",
+  "notExists": "Incorrect login or password"
 }
