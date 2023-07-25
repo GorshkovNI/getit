@@ -7,6 +7,34 @@ import {getAllCategory} from "@store/advertisement/advertisementSelector";
 import {CategoryList} from "@src/pages/AddAdvertisement/entities/CategoryList/CategoryList";
 import {Category} from "@src/pages/AddAdvertisement/interface";
 import {CreateAd} from "@src/pages/AddAdvertisement/entities/CreateAd/CreateAd";
+import {Cars} from "@src/pages/AddAdvertisement/entities/Category/Cars/Cars";
+
+
+
+interface IFields{
+    id: string,
+    name: string,
+    type: string,
+    options?:string
+}
+
+interface ICreateAd{
+    fields: IFields[]
+}
+
+
+function currentCategory(category: string, fields: []){
+    console.log('category: ', category)
+    switch (category){
+        case "Cars":
+            console.log('Render Cars')
+            return <Cars />
+
+        default:
+            console.log('Render CreateAd')
+            return fields.length > 0 ? <CreateAd fields={fields} /> : null
+    }
+}
 
 
 export const AddAdvertisement:FC = () => {
@@ -21,6 +49,7 @@ export const AddAdvertisement:FC = () => {
     }
 
     console.log(activePath)
+    console.log(activePath[activePath?.length - 1]?.name)
     const dispatch: AppDispatch  = useDispatch()
 
     useEffect(() => {
@@ -50,18 +79,13 @@ export const AddAdvertisement:FC = () => {
                     />
                 ))}
             </div>
-            {activePath[activePath.length - 1]?.customFields && activePath[activePath.length - 1]?.customFields.length > 0 &&
-                <div>
-                    { activePath[activePath.length - 1]?.customFields.map((item:any) => {
-                        return(
-                            <div>
-                                {item.name}
-                            </div>
-                        )
-                    })}
-                </div>}
-            <CreateAd name={'Make of car'} type={'text'} />
-
+            {/*{activePath[activePath.length - 1]?.customFields && activePath[activePath.length - 1]?.customFields.length > 0 &&*/}
+                <div className={styles.fieldsContainer}>
+                    {/*<CreateAd fields={activePath[activePath.length - 1]?.customFields} />*/}
+                    {currentCategory(activePath[activePath?.length - 1]?.name,
+                        activePath[activePath.length - 1]?.customFields ? activePath[activePath?.length - 1]?.customFields : [])}
+                </div>
+             {/*}*/}
         </div>
 
     )

@@ -24,8 +24,14 @@
 .input{
     box-sizing: border-box;
     width: 350px;
-    font-size: 20px;
+    font-size: 16px;
     height: 30px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .error{
@@ -44,4 +50,19 @@
     height: 200px;
     font-size: 15px;
     resize: none;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.radioForm{
+    display: flex;
+    flex-direction: row;
+}
+
+.MuiFormControl-root{
+    position: relative;
 }

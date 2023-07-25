@@ -11,7 +11,7 @@ interface IUserInfo{
 export const UserInfo:FC<IUserInfo> = ({name = 'User', rating = 2.3, countReviews = 0}) => {
     return(
         <>
-            <Avatar className={styles.avatar} sx={{width: 100, height: 100}}>H</Avatar>
+            <Avatar className={styles.avatar} sx={{width: 100, height: 100}}>{name[0]}</Avatar>
             <span className={styles.name}>{name}</span>
             <div className={styles.reviews}>
                 <Rating name="user-rating" value={rating} precision={0.5} readOnly />

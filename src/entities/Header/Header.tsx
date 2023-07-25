@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import styles from './Header.module.css'
 import {Link} from "react-router-dom";
-import {Button} from "../../shared/Button/Button";
+import {Button} from "@shared/Button/Button";
 import cn from 'classnames'
 import {ProfileArea} from "./components/ProfileArea/ProfileArea";
 import {Favorites} from "../../shared/Icons";
